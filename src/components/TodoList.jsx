@@ -10,7 +10,12 @@ function TodoList({ fnSelForm }) {
 
 	return (
 		<TodoListBlock>
-			{todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
+			{sort === 'all' && todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
+			{sort === 'complete' &&
+				todos.filter(todo => todo.done).map(todo => <TodoItem key={todo.id} todo={todo} />)}
+			{sort === 'incomplete' &&
+				todos.filter(todo => !todo.done).map(todo => <TodoItem key={todo.id} todo={todo} />)}
+			{}
 		</TodoListBlock>
 	)
 }
