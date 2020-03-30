@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { MdCheckBoxOutlineBlank, MdCheckBox, MdBuild, MdDelete } from 'react-icons/md'
 import { finish, remove } from '../reducers/todos'
 import { useCtxDispatch } from '../contexts/TodoCtxProvider'
@@ -33,7 +33,7 @@ const Title = styled.h3`
 const Edit = styled(Span)`width:40px;font-size:20px;`
 const Delete = styled(Span)`width:40px;font-size:20px;`
 
-function TodoItem({ todo }) {
+function TodoItem({ todo, fnSelForm, fnEditId }) {
 	const { id, tit, done } = todo
 
 	const dispatch = useContext(useCtxDispatch())
@@ -46,10 +46,20 @@ function TodoItem({ todo }) {
 			<Title>
 				{tit}
 			</Title>
-			<Edit>
+			<Edit
+				onClick={() => {
+					fnSelForm(false)
+					fnEditId(id)
+				}}
+			>
 				<MdBuild />
 			</Edit>
-			<Delete onClick={() => dispatch(remove(id))}>
+			<Delete
+				onClick={() => {
+					fnSelForm(true)
+					dispatch(remove(id))
+				}}
+			>
 				<MdDelete />
 			</Delete>
 		</TodoItemBlock>

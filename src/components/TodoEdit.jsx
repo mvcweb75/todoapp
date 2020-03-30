@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { MdAdd } from 'react-icons/md'
+import { useContext } from 'react'
+import { useCtxSate, useCtxDispatch } from '../contexts/TodoCtxProvider'
+import useInputs from '../custom_hooks/useInputs'
+import { edit } from '../reducers/todos'
 
 const TodoEditBlock = styled.form`
 	position: relative;
@@ -40,14 +44,23 @@ const BtnAdd = styled.button`
 	cursor: pointer;
 `
 
-function TodoEdit(props) {
+function TodoEdit({ editId, fnSelForm }) {
+	const state = useContext(useCtxSate())
+	const dispatch = useContext(useCtxDispatch())
+	const todo = state.todos.filter(todo => todo.id === editId)[0]
+
+	const { text, fnChange, fnReset } = useInputs(todo.tit)
+
 	return (
 		<TodoEditBlock
 			onSubmit={e => {
 				e.preventDefault()
+				dispatch(edit(editId, text))
+				fnSelForm(true)
+				fnReset()
 			}}
 		>
-			<InputBox />
+			<InputBox value={text} onChange={fnChange} autoFocus />
 			<BtnAdd>
 				<MdAdd />
 			</BtnAdd>

@@ -7,7 +7,6 @@ import TodoInsert from '../components/TodoInsert'
 import TodoEdit from '../components/TodoEdit'
 import TodoBody from '../components/TodoBody'
 import TodoList from '../components/TodoList'
-import TodoItem from '../components/TodoItem'
 import { useState } from 'react'
 import TodoFooter from '../components/TodoFooter'
 
@@ -29,9 +28,13 @@ const CreateGlobalStyle = createGlobalStyle`
 function TodoContainer(props) {
 	//입력폼, 수정폼 선택변수
 	const [selectForm, setSelectForm] = useState(true)
-	const fnSelForm = () => {
-		setSelectForm(!selectForm)
+	const fnSelForm = bool => {
+		setSelectForm(bool)
 	}
+
+	//수정할 항목 id 설정
+	const [editId, setEditId] = useState(null)
+	const fnEditId = id => setEditId(id)
 
 	return (
 		<TodoCtxProvider>
@@ -39,10 +42,10 @@ function TodoContainer(props) {
 			<TodoContainerBlock>
 				<TodoHead>
 					<TodoDate />
-					{selectForm ? <TodoInsert /> : <TodoEdit />}
+					{selectForm ? <TodoInsert /> : <TodoEdit editId={editId} fnSelForm={fnSelForm} />}
 				</TodoHead>
 				<TodoBody>
-					<TodoList fnSelForm={fnSelForm} />
+					<TodoList fnSelForm={fnSelForm} fnEditId={fnEditId} />
 				</TodoBody>
 				<TodoFooter />
 			</TodoContainerBlock>

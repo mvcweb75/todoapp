@@ -79,7 +79,10 @@ const reducer = (state, action) => {
 			}
 
 		case EDIT:
-			return null
+			return produce(state, draft => {
+				const todo = draft.todos.find(todo => todo.id === action.id)
+				todo.tit = action.tit
+			})
 
 		default:
 			throw new Error(`에러발생 - 해당하는 액션타입(${action.type})이 없습니다.`)

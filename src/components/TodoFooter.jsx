@@ -75,7 +75,7 @@ function TodoFooter(props) {
 					dispatch(sort('incomplete'))
 				}}
 			>
-				아직미완
+				해야할일
 			</BtnInComplete>
 		</TodoFooterBlock>
 	)
