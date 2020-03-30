@@ -18,25 +18,25 @@ const ToDate = styled.h1`
 	font-size: 48px;
 `
 
-const Today = styled.p`flex: 1;`
-const Year = styled.span`
-	display: block;
+const Today = styled.div`flex: 1;`
+
+const YearMonth = styled.p`
 	margin-top: 16px;
 	font-size: 16px;
 `
+const Year = styled.span`margin-right: 10px;`
+const Month = styled.span``
+
 const MonthTimeBlock = styled.span`
 	display: flex;
 	margin-top: 2px;
 `
-const Month = styled.span`font-weight: 600;`
 const Time = styled.time`
-	display: flex;
 	justify-content: space-between;
-	width: 80px;
-	margin-left: 20px;
+	width: 62px;
 `
 
-const Ampm = styled.span`display: block;`
+const Ampm = styled.span``
 
 const TodoLen = styled.h2`
 	display: flex;
@@ -103,16 +103,21 @@ function TodoDate(props) {
 				<span className="sr-only">일 할일</span>
 			</ToDate>
 			<Today>
-				<Year>
-					{year}
-				</Year>
-				<MonthTimeBlock>
+				<YearMonth>
+					<Year>
+						{year}
+					</Year>
 					<Month>
 						{month}
 					</Month>
+				</YearMonth>
+				<MonthTimeBlock>
 					<Time>
-						{time.hour}:{time.min}:{time.sec} <Ampm>{ampm}</Ampm>
+						{time.hour}:{time.min}:{time.sec}
 					</Time>
+					<Ampm>
+						{ampm}
+					</Ampm>
 				</MonthTimeBlock>
 			</Today>
 			<TodoLen>
