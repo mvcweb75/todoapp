@@ -9,6 +9,10 @@ const TodoItemBlock = styled.li`
 	height: 70px;
 	align-items: center;
 	border-bottom: 1px solid #555;
+
+	&:last-child {
+		border-bottom: none;
+	}
 `
 const Span = styled.span`
 	display: flex;
