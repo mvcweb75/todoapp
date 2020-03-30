@@ -5,7 +5,7 @@ import { useCtxSate } from '../contexts/TodoCtxProvider'
 
 const TodoListBlock = styled.ul``
 
-function TodoList({ fnSelForm, fnEditId }) {
+function TodoList({ fnChoice, fnEditId }) {
 	const { todos, sort } = useContext(useCtxSate())
 	let newTodos = null
 	switch (sort) {
@@ -24,7 +24,7 @@ function TodoList({ fnSelForm, fnEditId }) {
 	return (
 		<TodoListBlock>
 			{newTodos.map(todo =>
-				<TodoItem key={todo.id} todo={todo} fnSelForm={fnSelForm} fnEditId={fnEditId} />
+				<TodoItem key={todo.id} todo={todo} fnChoice={fnChoice} fnEditId={fnEditId} />
 			)}
 		</TodoListBlock>
 	)

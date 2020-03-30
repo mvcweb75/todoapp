@@ -22,7 +22,7 @@ export const useCtxNextId = () => {
 
 function TodoCtxProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, initialState)
-	const nextId = useRef(2)
+	const nextId = useRef(0)
 	return (
 		<CtxState.Provider value={state}>
 			<CtxDispatch.Provider value={dispatch}>

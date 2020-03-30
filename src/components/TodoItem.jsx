@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { MdCheckBoxOutlineBlank, MdCheckBox, MdBuild, MdDelete } from 'react-icons/md'
-import { finish, remove } from '../reducers/todos'
+import { edit, remove } from '../reducers/todos'
 import { useCtxDispatch } from '../contexts/TodoCtxProvider'
 
 const TodoItemBlock = styled.li`
@@ -26,29 +26,32 @@ const ChkBox = styled(Span)``
 
 const Title = styled.h3`
 	flex: 1;
+	height: 70px;
+	line-height: 70px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	${props => props.done && `color:#dedede;text-decoration:line-through;`};
 `
 const Edit = styled(Span)`width:40px;font-size:20px;`
 const Delete = styled(Span)`width:40px;font-size:20px;`
 
-function TodoItem({ todo, fnSelForm, fnEditId }) {
+function TodoItem({ todo, fnChoice, fnEditId }) {
 	const { id, tit, done } = todo
 
 	const dispatch = useContext(useCtxDispatch())
 
 	return (
 		<TodoItemBlock>
-			<ChkBox onClick={() => dispatch(finish(id))}>
+			<ChkBox onClick={() => dispatch(edit(id, 'done', !done))}>
 				{done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
 			</ChkBox>
-			<Title>
+			<Title done={done} onClick={() => dispatch(edit(id, 'done', !done))}>
 				{tit}
 			</Title>
 			<Edit
 				onClick={() => {
-					fnSelForm(false)
+					fnChoice(false)
 					fnEditId(id)
 				}}
 			>
@@ -56,7 +59,7 @@ function TodoItem({ todo, fnSelForm, fnEditId }) {
 			</Edit>
 			<Delete
 				onClick={() => {
-					fnSelForm(true)
+					fnChoice(true)
 					dispatch(remove(id))
 				}}
 			>

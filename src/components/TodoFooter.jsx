@@ -45,29 +45,11 @@ const BtnInComplete = styled(Button)`${props =>
 `}`
 
 function TodoFooter(props) {
-	const [show, setShow] = useState('all')
+	const [show, setShow] = useState('incomplete')
 	const dispatch = useContext(useCtxDispatch())
 
 	return (
 		<TodoFooterBlock>
-			<BtnAll
-				show={show}
-				onClick={() => {
-					setShow('all')
-					dispatch(sort('all'))
-				}}
-			>
-				전체보기
-			</BtnAll>
-			<BtnComplete
-				show={show}
-				onClick={() => {
-					setShow('complete')
-					dispatch(sort('complete'))
-				}}
-			>
-				미션완료
-			</BtnComplete>
 			<BtnInComplete
 				show={show}
 				onClick={() => {
@@ -77,6 +59,25 @@ function TodoFooter(props) {
 			>
 				해야할일
 			</BtnInComplete>
+			<BtnComplete
+				show={show}
+				onClick={() => {
+					setShow('complete')
+					dispatch(sort('complete'))
+				}}
+			>
+				미션완료
+			</BtnComplete>
+
+			<BtnAll
+				show={show}
+				onClick={() => {
+					setShow('all')
+					dispatch(sort('all'))
+				}}
+			>
+				전체보기
+			</BtnAll>
 		</TodoFooterBlock>
 	)
 }

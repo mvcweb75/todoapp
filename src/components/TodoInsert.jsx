@@ -44,7 +44,7 @@ const BtnAdd = styled.button`
 `
 
 function TodoInsert(props) {
-	const { text, fnChange, fnReset } = useInputs('')
+	const { text: tit, fnChange, fnReset } = useInputs('')
 	const $input = useRef()
 	const dispatch = useContext(useCtxDispatch())
 	const nextId = useContext(useCtxNextId())
@@ -52,12 +52,12 @@ function TodoInsert(props) {
 		<TodoInsertBlock
 			onSubmit={e => {
 				e.preventDefault()
-				dispatch(create(text, nextId.current++))
+				dispatch(create(nextId.current++, tit))
 				fnReset()
 				$input.current.focus()
 			}}
 		>
-			<InputBox ref={$input} value={text} onChange={fnChange} autoFocus />
+			<InputBox ref={$input} value={tit} onChange={fnChange} autoFocus />
 			<BtnAdd>
 				<MdAdd />
 			</BtnAdd>

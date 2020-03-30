@@ -44,23 +44,23 @@ const BtnAdd = styled.button`
 	cursor: pointer;
 `
 
-function TodoEdit({ editId, fnSelForm }) {
+function TodoEdit({ editId, fnChoice }) {
 	const state = useContext(useCtxSate())
 	const dispatch = useContext(useCtxDispatch())
 	const todo = state.todos.filter(todo => todo.id === editId)[0]
 
-	const { text, fnChange, fnReset } = useInputs(todo.tit)
+	const { text: tit, fnChange, fnReset } = useInputs(todo.tit)
 
 	return (
 		<TodoEditBlock
 			onSubmit={e => {
 				e.preventDefault()
-				dispatch(edit(editId, text))
-				fnSelForm(true)
+				dispatch(edit(editId, 'tit', tit))
+				fnChoice(true)
 				fnReset()
 			}}
 		>
-			<InputBox value={text} onChange={fnChange} autoFocus />
+			<InputBox value={tit} onChange={fnChange} autoFocus />
 			<BtnAdd>
 				<MdAdd />
 			</BtnAdd>

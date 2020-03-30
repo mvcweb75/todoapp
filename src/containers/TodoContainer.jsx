@@ -26,10 +26,10 @@ const CreateGlobalStyle = createGlobalStyle`
   `
 
 function TodoContainer(props) {
-	//입력폼, 수정폼 선택변수
-	const [selectForm, setSelectForm] = useState(true)
-	const fnSelForm = bool => {
-		setSelectForm(bool)
+	//입력폼(true), 수정폼(false) 선택변수
+	const [choice, setChoice] = useState(true)
+	const fnChoice = bool => {
+		setChoice(bool)
 	}
 
 	//수정할 항목 id 설정
@@ -42,10 +42,10 @@ function TodoContainer(props) {
 			<TodoContainerBlock>
 				<TodoHead>
 					<TodoDate />
-					{selectForm ? <TodoInsert /> : <TodoEdit editId={editId} fnSelForm={fnSelForm} />}
+					{choice ? <TodoInsert /> : <TodoEdit editId={editId} fnChoice={fnChoice} />}
 				</TodoHead>
 				<TodoBody>
-					<TodoList fnSelForm={fnSelForm} fnEditId={fnEditId} />
+					<TodoList fnChoice={fnChoice} fnEditId={fnEditId} />
 				</TodoBody>
 				<TodoFooter />
 			</TodoContainerBlock>
