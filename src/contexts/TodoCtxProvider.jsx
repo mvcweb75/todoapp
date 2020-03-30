@@ -21,10 +21,12 @@ export const useCtxNextId = () => {
 }
 
 export const STORAGE_KEY = 'todo-store'
-localStorage[STORAGE_KEY] = localStorage[STORAGE_KEY] || JSON.stringify(initialState)
 
 function TodoCtxProvider({ children }) {
-	const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage[STORAGE_KEY]))
+	const [state, dispatch] = useReducer(
+		reducer,
+		JSON.parse(localStorage[STORAGE_KEY] || JSON.stringify(initialState))
+	)
 	const nextId = useRef(0)
 
 	useEffect(

@@ -36,7 +36,7 @@ const Time = styled.time`
 	width: 62px;
 `
 
-const Ampm = styled.span``
+const Dayname = styled.span``
 
 const TodoLen = styled.h2`
 	display: flex;
@@ -62,15 +62,14 @@ function TodoDate(props) {
 	const date = today.getDate()
 	const year = today.toLocaleDateString('ko-kr', { year: 'numeric' })
 	const month = today.toLocaleDateString('ko-kr', { month: 'long' })
-
-	const [ampm, setAmpm] = useState(today.getHours() >= 12 ? 'PM' : 'AM')
+	const dayname = today.toLocaleDateString('ko-KR', { weekday: 'long' })
 
 	const fnZero = useCallback(sec => {
 		return ('00' + sec).substr(-2, 2)
 	}, [])
 
 	const [time, setTime] = useState({
-		hour: fnZero(ampm === 'AM' ? today.getHours() : today.getHours() - 12),
+		hour: fnZero(today.getHours() >= 13 && today.getHours() - 12),
 		min: fnZero(today.getMinutes()),
 		sec: fnZero(today.getSeconds())
 	})
@@ -79,17 +78,16 @@ function TodoDate(props) {
 		() => {
 			setTimeout(() => {
 				const now = new Date()
-				now.getHours() >= 12 ? setAmpm('PM') : setAmpm('AM')
 
 				setTime({
 					...time,
-					hour: fnZero(ampm === 'AM' ? now.getHours() : now.getHours() - 12),
+					hour: fnZero(now.getHours() >= 13 && now.getHours() - 12),
 					min: fnZero(now.getMinutes()),
 					sec: fnZero(now.getSeconds())
 				})
 			}, 1000)
 		},
-		[fnZero, ampm, time]
+		[fnZero, time]
 	)
 
 	// 할일 개수
@@ -115,9 +113,9 @@ function TodoDate(props) {
 					<Time>
 						{time.hour}:{time.min}:{time.sec}
 					</Time>
-					<Ampm>
-						{ampm}
-					</Ampm>
+					<Dayname>
+						{dayname}
+					</Dayname>
 				</MonthTimeBlock>
 			</Today>
 			<TodoLen>
