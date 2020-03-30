@@ -5,10 +5,10 @@ import { useCtxState } from '../contexts/TodoCtxProvider'
 
 const TodoListBlock = styled.ul`
 	overflow-y: scroll;
-	position: absolute;
+	/* position: absolute;
 	right: -17px;
+	width: calc(100% + 17px); */
 	height: calc(100% - 210px);
-	width: calc(100% + 17px);
 `
 
 function TodoList({ fnChoice, fnEditId }) {
