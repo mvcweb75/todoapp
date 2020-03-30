@@ -6,20 +6,20 @@ const CtxState = createContext(null)
 const CtxDispatch = createContext(null)
 const CtxNextId = createContext(null)
 
-export const useCtxState = useCallback(() => {
+export const useCtxState = () => {
 	if (CtxState === null) return null
 	return CtxState
-}, [])
+}
 
-export const useCtxDispatch = useCallback(() => {
+export const useCtxDispatch = () => {
 	if (CtxDispatch === null) return null
 	return CtxDispatch
-}, [])
+}
 
-export const useCtxNextId = useCallback(() => {
+export const useCtxNextId = () => {
 	if (CtxNextId === null) return null
 	return CtxNextId
-}, [])
+}
 
 export const STORAGE_KEY = 'todo-store'
 
