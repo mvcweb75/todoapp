@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { useState } from 'react'
-import { useCtxDispatch } from '../contexts/TodoCtxProvider'
+import { useCtxDispatch, useCtxState } from '../contexts/TodoCtxProvider'
 import { sort } from '../reducers/todos'
 
 const TodoFooterBlock = styled.footer`
@@ -51,11 +51,21 @@ const BtnInComplete = styled(Button)`${props =>
 `}`
 
 function TodoFooter(props) {
-	const [show, setShow] = useState('incomplete')
+	const sortVal = useContext(useCtxState()).sort //정렬기준
 	const dispatch = useContext(useCtxDispatch())
+	const [show, setShow] = useState(sortVal)
 
 	return (
 		<TodoFooterBlock>
+			<BtnAll
+				show={show}
+				onClick={() => {
+					setShow('all')
+					dispatch(sort('all'))
+				}}
+			>
+				전체보기
+			</BtnAll>
 			<BtnInComplete
 				show={show}
 				onClick={() => {
@@ -74,16 +84,6 @@ function TodoFooter(props) {
 			>
 				미션완료
 			</BtnComplete>
-
-			<BtnAll
-				show={show}
-				onClick={() => {
-					setShow('all')
-					dispatch(sort('all'))
-				}}
-			>
-				전체보기
-			</BtnAll>
 		</TodoFooterBlock>
 	)
 }

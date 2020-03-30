@@ -21,7 +21,7 @@ export const initialState = {
 		// 	done: true
 		// }
 	],
-	sort: 'incomplete'
+	sort: 'all'
 }
 
 //리듀서
