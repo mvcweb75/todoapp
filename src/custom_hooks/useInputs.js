@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 function useInputs(initialData) {
 	const [text, setText] = useState('')
 	const fnChange = useCallback(e => setText(e.target.value), [])
-	const fnReset = useCallback(() => setText(initialData), [])
+	const fnReset = useCallback(() => setText(initialData), [initialData])
 
 	useEffect(
 		() => {

@@ -1,6 +1,5 @@
 import React, { useReducer, useRef, createContext, useEffect } from 'react'
 import reducer, { initialState } from '../reducers/todos'
-import { useCallback } from 'react'
 
 const CtxState = createContext(null)
 const CtxDispatch = createContext(null)

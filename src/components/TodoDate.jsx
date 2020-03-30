@@ -69,7 +69,7 @@ function TodoDate(props) {
 	}, [])
 
 	const [time, setTime] = useState({
-		hour: fnZero(today.getHours() >= 13 && today.getHours() - 12),
+		hour: fnZero(today.getHours() >= 13 ? today.getHours() - 12 : today.getHours()),
 		min: fnZero(today.getMinutes()),
 		sec: fnZero(today.getSeconds())
 	})
@@ -81,7 +81,7 @@ function TodoDate(props) {
 
 				setTime({
 					...time,
-					hour: fnZero(now.getHours() >= 13 && now.getHours() - 12),
+					hour: fnZero(now.getHours() >= 13 ? now.getHours() - 12 : now.getHours()),
 					min: fnZero(now.getMinutes()),
 					sec: fnZero(now.getSeconds())
 				})
