@@ -1,4 +1,4 @@
-import React, { useReducer, useRef, createContext } from 'react'
+import React, { useReducer, useRef, createContext, useEffect } from 'react'
 import reducer, { initialState } from '../reducers/todos'
 
 const CtxState = createContext(null)
@@ -20,9 +20,20 @@ export const useCtxNextId = () => {
 	return CtxNextId
 }
 
+export const STORAGE_KEY = 'todo-store'
+localStorage[STORAGE_KEY] = localStorage[STORAGE_KEY] || JSON.stringify(initialState)
+
 function TodoCtxProvider({ children }) {
-	const [state, dispatch] = useReducer(reducer, initialState)
+	const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage[STORAGE_KEY]))
 	const nextId = useRef(0)
+
+	useEffect(
+		() => {
+			localStorage[STORAGE_KEY] = JSON.stringify(state)
+		},
+		[state]
+	)
+
 	return (
 		<CtxState.Provider value={state}>
 			<CtxDispatch.Provider value={dispatch}>
