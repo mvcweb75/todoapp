@@ -13,7 +13,6 @@ const TodoFooterBlock = styled.footer`
 	bottom: 0;
 	width: 100%;
 	height: 80px;
-	padding: 0 15px;
 	background-color: #fff;
 	border-top: 1px solid #555;
 `

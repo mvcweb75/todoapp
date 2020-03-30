@@ -23,7 +23,6 @@ const TodoContainerBlock = styled.div`
 	position: relative;
 	max-width: 640px;
 	margin: 0 auto;
-	border: 1px solid #333;
 	border-radius: 0 0 15px 15px;
 	${props =>
 		props.height &&

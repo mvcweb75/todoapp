@@ -7,6 +7,7 @@ import { useCtxDispatch } from '../contexts/TodoCtxProvider'
 const TodoItemBlock = styled.li`
 	display: flex;
 	height: 70px;
+	padding: 0 10px;
 	align-items: center;
 	border-bottom: 1px solid #555;
 `
