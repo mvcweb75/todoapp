@@ -15,11 +15,41 @@ export const edit = (id, name, value) => ({ type: EDIT, id, name, value })
 //초기값
 export const initialState = {
 	todos: [
-		// {
-		// 	id: 0,
-		// 	tit: '리액트 연습',
-		// 	done: true
-		// }
+		{
+			id: 1,
+			tit: '리액트 연습1',
+			done: true
+		},
+		{
+			id: 2,
+			tit: '리액트 연습2',
+			done: true
+		},
+		{
+			id: 3,
+			tit: '리액트 연습3',
+			done: true
+		},
+		{
+			id: 4,
+			tit: '리액트 연습4',
+			done: true
+		},
+		{
+			id: 5,
+			tit: '리액트 연습5',
+			done: true
+		},
+		{
+			id: 6,
+			tit: '리액트 연습6',
+			done: true
+		},
+		{
+			id: 7,
+			tit: '리액트 연습7',
+			done: true
+		}
 	],
 	sort: 'incomplete'
 }

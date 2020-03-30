@@ -7,7 +7,7 @@ const TodoListBlock = styled.ul`
 	overflow-y: scroll;
 	position: absolute;
 	right: -17px;
-	height: 100%;
+	height: calc(100% - 210px);
 	width: calc(100% + 17px);
 `
 

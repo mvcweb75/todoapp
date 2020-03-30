@@ -12,8 +12,10 @@ const TodoFooterBlock = styled.footer`
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	padding: 15px;
+	height: 80px;
+	padding: 0 15px;
 	background-color: #fff;
+	border-top: 1px solid #555;
 `
 
 const Button = styled.button`
