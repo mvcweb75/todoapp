@@ -1,6 +1,6 @@
 {
-	"short_name": "Todo App",
-	"name": "React ToDo App",
+	"short_name": "오늘할일",
+	"name": "부릉부릉안쌤의 투두앱",
 	"icons": [
 		{
 			"src": "favicon.ico",
