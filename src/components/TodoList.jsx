@@ -5,9 +5,6 @@ import { useCtxState } from '../contexts/TodoCtxProvider'
 
 const TodoListBlock = styled.ul`
 	overflow-y: scroll;
-	/* position: absolute;
-	right: -17px;
-	width: calc(100% + 17px); */
 	height: calc(100% - 210px);
 `
 
@@ -36,4 +33,4 @@ function TodoList({ fnChoice, fnEditId }) {
 	)
 }
 
-export default TodoList
+export default React.memo(TodoList)

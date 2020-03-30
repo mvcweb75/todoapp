@@ -70,4 +70,4 @@ function TodoItem({ todo, fnChoice, fnEditId }) {
 	)
 }
 
-export default TodoItem
+export default React.memo(TodoItem)

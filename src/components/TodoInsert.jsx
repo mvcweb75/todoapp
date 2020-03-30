@@ -67,4 +67,4 @@ function TodoInsert(props) {
 	)
 }
 
-export default TodoInsert
+export default React.memo(TodoInsert)

@@ -68,4 +68,4 @@ function TodoEdit({ editId, fnChoice }) {
 	)
 }
 
-export default TodoEdit
+export default React.memo(TodoEdit)

@@ -47,7 +47,7 @@ const TodoLen = styled.h2`
 	text-align: right;
 `
 // 할일 개수 함수
-const fnTodoLen = (todos, sort) => {
+const fnTodoLen = useCallback((todos, sort) => {
 	if (sort === 'all') {
 		return todos.length
 	} else if (sort === 'complete') {
@@ -55,7 +55,7 @@ const fnTodoLen = (todos, sort) => {
 	} else if (sort === 'incomplete') {
 		return todos.filter(todo => !todo.done).length
 	}
-}
+}, [])
 
 function TodoDate(props) {
 	const today = new Date()
@@ -125,4 +125,4 @@ function TodoDate(props) {
 	)
 }
 
-export default TodoDate
+export default React.memo(TodoDate)

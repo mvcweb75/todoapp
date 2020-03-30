@@ -88,4 +88,4 @@ function TodoFooter(props) {
 	)
 }
 
-export default TodoFooter
+export default React.memo(TodoFooter)

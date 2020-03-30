@@ -11,4 +11,4 @@ function TodoBody({ children }) {
 	)
 }
 
-export default TodoBody
+export default React.memo(TodoBody)

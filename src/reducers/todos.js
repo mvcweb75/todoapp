@@ -1,4 +1,5 @@
 import produce from 'immer'
+import { useCallback } from 'react'
 
 //액션타입변수
 const CREATE = 'todos/CREATE'
@@ -7,10 +8,10 @@ const SORT = 'todos/SORT'
 const EDIT = 'todos/EDIT'
 
 //액션생성함수
-export const create = (nextId, tit) => ({ type: CREATE, nextId, tit })
-export const remove = id => ({ type: REMOVE, id })
-export const sort = show => ({ type: SORT, show })
-export const edit = (id, name, value) => ({ type: EDIT, id, name, value })
+export const create = useCallback((nextId, tit) => ({ type: CREATE, nextId, tit }), [])
+export const remove = useCallback(id => ({ type: REMOVE, id }), [])
+export const sort = useCallback(show => ({ type: SORT, show }), [])
+export const edit = useCallback((id, name, value) => ({ type: EDIT, id, name, value }), [])
 
 //초기값
 export const initialState = {

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 function useInputs(initialData) {
 	const [text, setText] = useState('')
-	const fnChange = e => setText(e.target.value)
-	const fnReset = () => setText(initialData)
+	const fnChange = useCallback(e => setText(e.target.value), [])
+	const fnReset = useCallback(() => setText(initialData), [])
 
 	useEffect(
 		() => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import styled, { createGlobalStyle, css } from 'styled-components'
 import TodoCtxProvider from '../contexts/TodoCtxProvider'
 import TodoHead from '../components/TodoHead'
@@ -34,13 +34,13 @@ const TodoContainerBlock = styled.div`
 function TodoContainer(props) {
 	//입력폼(true), 수정폼(false) 선택변수
 	const [choice, setChoice] = useState(true)
-	const fnChoice = bool => {
+	const fnChoice = useCallback(bool => {
 		setChoice(bool)
-	}
+	}, [])
 
 	//수정할 항목 id 설정
 	const [editId, setEditId] = useState(null)
-	const fnEditId = id => setEditId(id)
+	const fnEditId = useCallback(id => setEditId(id), [])
 
 	const [height, setHeight] = useState()
 
@@ -65,4 +65,4 @@ function TodoContainer(props) {
 	)
 }
 
-export default TodoContainer
+export default React.memo(TodoContainer)

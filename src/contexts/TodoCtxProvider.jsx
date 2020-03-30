@@ -1,24 +1,25 @@
 import React, { useReducer, useRef, createContext, useEffect } from 'react'
 import reducer, { initialState } from '../reducers/todos'
+import { useCallback } from 'react'
 
 const CtxState = createContext(null)
 const CtxDispatch = createContext(null)
 const CtxNextId = createContext(null)
 
-export const useCtxState = () => {
+export const useCtxState = useCallback(() => {
 	if (CtxState === null) return null
 	return CtxState
-}
+}, [])
 
-export const useCtxDispatch = () => {
+export const useCtxDispatch = useCallback(() => {
 	if (CtxDispatch === null) return null
 	return CtxDispatch
-}
+}, [])
 
-export const useCtxNextId = () => {
+export const useCtxNextId = useCallback(() => {
 	if (CtxNextId === null) return null
 	return CtxNextId
-}
+}, [])
 
 export const STORAGE_KEY = 'todo-store'
 
@@ -47,4 +48,4 @@ function TodoCtxProvider({ children }) {
 	)
 }
 
-export default TodoCtxProvider
+export default React.memo(TodoCtxProvider)
