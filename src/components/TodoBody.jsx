@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TodoBodyBlock = styled.section``
+const TodoBodyBlock = styled.section`height: 100%;`
 
 function TodoBody({ children }) {
 	return (

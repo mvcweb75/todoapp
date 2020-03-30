@@ -19,7 +19,7 @@ const Span = styled.span`
 	cursor: pointer;
 
 	&:hover {
-		color: #345343;
+		color: #ff4562;
 	}
 `
 const ChkBox = styled(Span)``
@@ -51,7 +51,7 @@ function TodoItem({ todo, fnChoice, fnEditId }) {
 			</Title>
 			<Edit
 				onClick={() => {
-					fnChoice(false)
+					fnChoice(false) //수정폼 노출
 					fnEditId(id)
 				}}
 			>
@@ -59,7 +59,7 @@ function TodoItem({ todo, fnChoice, fnEditId }) {
 			</Edit>
 			<Delete
 				onClick={() => {
-					fnChoice(true)
+					fnChoice(true) //입력폼 노출
 					dispatch(remove(id))
 				}}
 			>

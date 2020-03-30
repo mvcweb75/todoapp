@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdAdd } from 'react-icons/md'
 import { useContext } from 'react'
-import { useCtxSate, useCtxDispatch } from '../contexts/TodoCtxProvider'
+import { useCtxState, useCtxDispatch } from '../contexts/TodoCtxProvider'
 import useInputs from '../custom_hooks/useInputs'
 import { edit } from '../reducers/todos'
 
@@ -45,7 +45,7 @@ const BtnAdd = styled.button`
 `
 
 function TodoEdit({ editId, fnChoice }) {
-	const state = useContext(useCtxSate())
+	const state = useContext(useCtxState())
 	const dispatch = useContext(useCtxDispatch())
 	const todo = state.todos.filter(todo => todo.id === editId)[0]
 

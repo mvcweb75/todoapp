@@ -5,7 +5,7 @@ const CtxState = createContext(null)
 const CtxDispatch = createContext(null)
 const CtxNextId = createContext(null)
 
-export const useCtxSate = () => {
+export const useCtxState = () => {
 	if (CtxState === null) return null
 	return CtxState
 }

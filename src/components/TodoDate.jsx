@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
-import { useCtxSate } from '../contexts/TodoCtxProvider'
+import { useCtxState } from '../contexts/TodoCtxProvider'
 import { useContext } from 'react'
 import { useMemo } from 'react'
 
@@ -93,7 +93,7 @@ function TodoDate(props) {
 	)
 
 	// 할일 개수
-	const state = useContext(useCtxSate())
+	const state = useContext(useCtxState())
 	let todoLen = useMemo(() => fnTodoLen(state.todos, state.sort), [state])
 
 	return (

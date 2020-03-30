@@ -8,7 +8,12 @@ const TodoFooterBlock = styled.footer`
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 	padding: 15px;
+	background-color: #fff;
 `
 
 const Button = styled.button`

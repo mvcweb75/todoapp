@@ -52,9 +52,11 @@ function TodoInsert(props) {
 		<TodoInsertBlock
 			onSubmit={e => {
 				e.preventDefault()
-				dispatch(create(nextId.current++, tit))
-				fnReset()
-				$input.current.focus()
+				if (tit) {
+					dispatch(create(nextId.current++, tit))
+					fnReset()
+					$input.current.focus()
+				}
 			}}
 		>
 			<InputBox ref={$input} value={tit} onChange={fnChange} autoFocus />

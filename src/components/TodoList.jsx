@@ -1,12 +1,18 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import TodoItem from './TodoItem'
-import { useCtxSate } from '../contexts/TodoCtxProvider'
+import { useCtxState } from '../contexts/TodoCtxProvider'
 
-const TodoListBlock = styled.ul``
+const TodoListBlock = styled.ul`
+	overflow-y: scroll;
+	position: absolute;
+	right: -17px;
+	height: 100%;
+	width: calc(100% + 17px);
+`
 
 function TodoList({ fnChoice, fnEditId }) {
-	const { todos, sort } = useContext(useCtxSate())
+	const { todos, sort } = useContext(useCtxState())
 	let newTodos = null
 	switch (sort) {
 		case 'all':
