@@ -13,7 +13,7 @@ export const sort = show => ({ type: SORT, show })
 export const edit = (id, name, value) => ({ type: EDIT, id, name, value })
 
 //초기값
-export const initialState = {
+export const initialData = {
 	todos: [
 		// {
 		// 	id: 1,

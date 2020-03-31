@@ -43,7 +43,6 @@ function TodoContainer(props) {
 	const fnEditId = useCallback(id => setEditId(id), [])
 
 	const [height, setHeight] = useState()
-
 	useEffect(() => {
 		setHeight(window.innerHeight) //브라우저 화면의 높이
 	}, [])

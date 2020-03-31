@@ -1,5 +1,5 @@
 import React, { useReducer, useRef, createContext, useEffect } from 'react'
-import reducer, { initialState } from '../reducers/todos'
+import reducer, { initialData } from '../reducers/todos'
 
 const CtxState = createContext(null)
 const CtxDispatch = createContext(null)
@@ -21,12 +21,10 @@ export const useCtxNextId = () => {
 }
 
 export const STORAGE_KEY = 'todo-store'
+const defaultState = JSON.parse(localStorage[STORAGE_KEY] || JSON.stringify(initialData))
 
 function TodoCtxProvider({ children }) {
-	const [state, dispatch] = useReducer(
-		reducer,
-		JSON.parse(localStorage[STORAGE_KEY] || JSON.stringify(initialState))
-	)
+	const [state, dispatch] = useReducer(reducer, defaultState)
 	const nextId = useRef(0)
 
 	useEffect(
